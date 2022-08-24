@@ -11,8 +11,8 @@ class snmp(object):
 		
 		self.ftp_server = {
 			'ip':'',
-			'ftp_user':'router',
-			'ftp_pass':'update',
+			'ftp_user':'snmpro',
+			'ftp_pass':'snmpro',
 		}
 
 		self.base_oid = '1.3.6.1.4.1.9.9.96.1.1.1.1'
@@ -102,12 +102,14 @@ class snmp(object):
 			(self.base_oid + self.ccCopySourceFileType + self.arbitrary_number, self.ccCopySourceFileType_options['networkFile']),
 		]
 		return
+    
 	def source_run(self):
 		self.commands += [
 			(self.base_oid + self.ccConfigCopyProtocol + self.arbitrary_number, self.ccConfigCopyProtocol_options['ftp']),
 			(self.base_oid + self.ccCopySourceFileType + self.arbitrary_number, self.ccCopySourceFileType_options['runningConfig']),
 		]
 		return
+    
 	def source_start(self):
 		self.commands += [
 			(self.base_oid + self.ccConfigCopyProtocol + self.arbitrary_number, self.ccConfigCopyProtocol_options['ftp']),
@@ -124,6 +126,7 @@ class snmp(object):
 			(self.base_oid + self.ccCopyUserPassword + self.arbitrary_number, OctetString(self.ftp_server['ftp_pass'])),
 		]
 		return
+    
 	def dest_run(self):
 		self.commands += [
 			(self.base_oid + self.ccCopyDestFileType + self.arbitrary_number, self.ccCopyDestFileType_options['runningConfig']),
@@ -133,6 +136,7 @@ class snmp(object):
 			(self.base_oid + self.ccCopyUserPassword + self.arbitrary_number, OctetString(self.ftp_server['ftp_pass'])),
 		]
 		return
+    
 	def dest_start(self):
 		self.commands += [
 			(self.base_oid + self.ccCopyDestFileType + self.arbitrary_number, self.ccCopyDestFileType_options['startupConfig']),
