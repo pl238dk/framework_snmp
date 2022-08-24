@@ -16,11 +16,11 @@ After the configuration is fully uploaded, the device triggers an FTP download o
 
 ## Authentication
 
+### restore.py
+
 Unfortunately, credentials would need to be hard-coded in the most recent version.
 
-#### restore.py
-
-For `restore.py` - FTP server authentication, under `__init__()`
+FTP server authentication, under `__init__()`
 
 ```
     self.ftp_server = {
@@ -38,7 +38,7 @@ Each instantiation requires passing the SNMP community string (v2) :
 >>> s = snmp(host, community)
 ```
 
-#### snmp.py
+### snmp.py
 
 Credentials are passed via object instantiation, but has a default of 'snmpro' if none are provided.
 
